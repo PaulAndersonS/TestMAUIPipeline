@@ -47,10 +47,10 @@ steps:
 
 - script: |
     echo "##[group]Capture Emulator Screenshot"
-    mkdir -p screenshots
     $ANDROID_HOME/platform-tools/adb exec-out screencap -p > $(Build.ArtifactStagingDirectory)/screenshot.png
-    mv screenshot.png screenshots/
-    echo "Screenshot captured at screenshots/screenshot.png"
+    pathToPublish: '$(Build.ArtifactStagingDirectory)/screenshot.png'
+    artifactName: 'screenshot'
+    publishLocation: 'Container'
     echo "##[endgroup]"
   displayName: 'Start Emulator and Capture Screenshot'
 
